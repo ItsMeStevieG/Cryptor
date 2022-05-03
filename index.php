@@ -82,7 +82,9 @@ if (isset($_POST) && !empty($_POST)) {
     <a href='?nav=encode' class='btnLink'>Encode</a>&nbsp;&nbsp;&nbsp;<a href='?nav=decode'
         class='btnLink'>Decode</a>&nbsp;&nbsp;&nbsp;<a href='?nav=generate' class='btnLink'>Generate Key</a><br /><br />
     <?php
-    if (isset($_GET['nav']) && $_GET['nav']=='encode') {
+    if (!isset($_GET['nav']) || $_GET['nav']=="home") {
+        echo("<br />Welcome to Cryptor, Please click a link above to get started!<br />");
+    } elseif (isset($_GET['nav']) && $_GET['nav']=='encode') {
         if (isset($_SESSION['key'])) {
             $key = $_SESSION['key'];
         } else {
